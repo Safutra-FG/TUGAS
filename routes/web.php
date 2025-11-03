@@ -17,5 +17,7 @@ Route :: view('/', 'v_dashboard');
 Route :: get('/home', [c_home::class,'index']);
 Route :: get('/contact', [c_contact::class, 'index']);
 Route :: get('/dosen', [c_dosen::class, 'index']);
+Route :: get('/dosen/detail/{id_dosen}', [c_dosen::class, 'detail']);
 Route :: get('/mahasiswa', [c_mahasiswa::class, 'index']);
-Route :: get('/about/{nama_pt}', [c_about::class, 'index']);
+Route :: get('/about/{nama_pt}', [c_about::class, 'index'])->name (name: 'about');
+
