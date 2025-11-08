@@ -15,10 +15,10 @@
             <div class="card mb-4">
                 <div class="card-body">
                     @if(session('pesan'))
-                    <div class="alert alert-success alert-dismissible">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>    
-                        <h5><i class="icon fas fa-check"></i>success</h5>
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <h5><i class="icon fas fa-check"></i> Success</h5>
                         {{session('pesan')}}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>    
                     @endif
                     <div align="right">
@@ -47,7 +47,7 @@
                             <td>
                                 <a href="/dosen/detail/{{$data->id_dosen}}" class="btn btn-success btn-sm">Detail</a>
                                 <a href="/dosen/edit/{{$data->id_dosen}}" class="btn btn-warning btn-sm ">Edit</a>
-                                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete{{$data->id_dosen}}">
+                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#delete{{$data->id_dosen}}">
                                     Delete
                                 </button>   
                             </td>
@@ -66,21 +66,19 @@
                     </tfoot>
                 </table>
                 @foreach ($dosen as $data)
-                <div class="modal fade" id="delete{{$data->id_dosen}}">
+                <div class="modal fade" id="delete{{$data->id_dosen}}" tabindex="-1" aria-labelledby="deleteLabel{{$data->id_dosen}}" aria-hidden="true">
                     <div class="modal-dialog modal-sm">
                         <div class="modal-content bg-danger">
                             <div class="modal-header">
-                                <h6 class="modal-title">{{$data->nama_dosen}}</h6>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
+                                <h6 class="modal-title" id="deleteLabel{{$data->id_dosen}}">{{$data->nama_dosen}}</h6>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <p>Apakah ingin menghapus data ini? </p>
                             </div>
                             <div class="modal-footer justify-content-between">
                                 <a href="/dosen/delete/{{$data->id_dosen}}" class="btn btn-outline-light">YES</a>
-                                <button type="button" class="btn btn-outline-liht" data-dismiss="modal">NO</button>
+                                <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">NO</button>
                             </div>
                         </div>
                     </div>
