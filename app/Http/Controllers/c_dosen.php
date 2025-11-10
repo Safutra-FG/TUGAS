@@ -15,7 +15,7 @@ class c_dosen extends Controller
         $data = [
             'dosen' => $this->M_Dosen->allData(),
         ];
-        return view('v_dosen',$data);
+        return view('dosen.index',$data);
     }
 
     public function detail($id_dosen)
